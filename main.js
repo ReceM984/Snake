@@ -12,6 +12,7 @@ let snakeBody = [];
 
 let foodX = blockSize * 10;
 let foodY = blockSize * 10;
+let score = 0;
 
 var gameOver = false;
 
@@ -39,6 +40,7 @@ function update() {
     if (snakeX === foodX && snakeY === foodY) {
         snakeBody.push([foodX, foodY]);
         moveFood();
+        score++;
     }
 
     for (let i = snakeBody.length-1; i > 0; i--) {
@@ -59,13 +61,11 @@ function update() {
 
     if (snakeX < 0 || snakeX > cols*blockSize || snakeY < 0 || snakeY > rows*blockSize) {
         gameOver = true;
-        alert('Game Over');
     }
 
     for (let i = 0; i < snakeBody.length; i++) {
         if (snakeX == snakeBody[i][0] && snakeY == snakeBody[i][1]) {
             gameOver = true;
-            alert('Game Over');
         }
     }
 }
